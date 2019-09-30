@@ -17,7 +17,7 @@ pip install Flask
 pip install sqlalchemy
 pip install cookiecutter
 pip install jupyter_contrib_nbextensions
-
+pip install autopep8
 
 # Obtain the project directory
 project_name=$(echo "${PWD##*/}")
