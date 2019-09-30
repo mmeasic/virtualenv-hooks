@@ -1,0 +1,31 @@
+#!/bin/bash
+# This hook is run after a new project is activated.
+
+# Install Python data modules
+pip install numpy
+pip install scipy
+pip install matplotlib
+pip install pandas
+pip install sympy
+pip install nose
+pip install unittest2
+pip install seaborn
+pip install scikit-learn
+pip install "ipython[all]"
+pip install bokeh
+pip install Flask
+pip install sqlalchemy
+pip install cookiecutter
+pip install jupyter_contrib_nbextensions
+
+
+# Obtain the project directory
+project_name=$(echo "${PWD##*/}")
+
+# Create the structure using DS cookiecutter
+cookiecutter $COOKIE_GITHUB project_name=$project_name --no-input
+
+# Avoid twice-created inner-most directory from cookiecutter
+shopt -s dotglob nullglob
+mv $project_name/* .
+rmdir $project_name
